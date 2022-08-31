@@ -1,0 +1,41 @@
+@import "../../components/Configurator/styles.scss";
+
+
+.formEditorContainer {
+    width: 90%;
+    margin: 0em 2em 2em 1em;
+}
+
+.pleaseSelectConfig {
+    padding: 2em 0em;
+}
+
+.configLoading {
+    padding: 2em;
+}
+
+.formInnerContainer {
+    margin-left: 1em;
+}
+
+.toolsPanelContainer {
+    margin-top: 2em;
+}
+
+.form-group {margin-left:2px;}
+
+.language-javascript, .language-json {
+    background-color: #E7E9EA;
+}
+
+.innerToolsPanelContainer {
+    padding-top:1em;
+}
+
+.innerToolsPanelContainer button {
+    margin-top:1em;
+}
+
+.configuratorPanel {
+    margin-left: 1em;
+}

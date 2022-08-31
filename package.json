@@ -1,0 +1,37 @@
+{
+    "private": true,
+    "name": "nr1-synthetic-configurator",
+    "version": "0.1.0",
+    "scripts": {
+        "start": "nr1 nerdpack:serve",
+        "build": "uglifyjs --compress --mangle --output ./example-synthetic/uglified.js -- ./example-synthetic/source.js",
+        "add":  "git add ./example-synthetic/uglified.js",
+        "echo": "echo Build: uglified.js created!!!"
+    },
+    "nr1": {
+        "uuid": "7bc704a6-df34-43db-b5e8-9e6fdfdacd4b"
+    },
+    "pre-commit": [
+      "build",
+      "add",
+      "echo"
+    ],
+    "dependencies": {
+        "prismjs": "^1.29.0",
+        "prop-types": "15.7.2",
+        "react": "17.0.2",
+        "react-copy-to-clipboard": "^5.1.0",
+        "react-dom": "17.0.2",
+        "react-jsonschema-form": "^1.8.1",
+        "react-simple-code-editor": "^0.13.0"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "not ie < 11",
+        "not dead"
+    ],
+    "devDependencies": {
+        "pre-commit": "^1.2.2",
+        "uglify-js": "^3.17"
+    }
+}

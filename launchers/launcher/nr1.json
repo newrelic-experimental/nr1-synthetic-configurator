@@ -1,0 +1,7 @@
+{
+  "schemaType": "LAUNCHER",
+  "id": "nr1-synthetic-configurator-launcher",
+  "displayName": "Synthetic Configurator",
+  "description": "For configuring synthetic data",
+  "rootNerdletId": "nr1-synthetic-configurator"
+}
