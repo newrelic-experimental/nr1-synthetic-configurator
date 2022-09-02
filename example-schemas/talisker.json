@@ -1,0 +1,60 @@
+{
+    "title": "Talisker Configuration Manager",
+    "description": "Configure talikser tasks",
+    "type": "object",
+    "properties": {
+        "tasks": {
+            "type": "array",
+            "title": "Tasks",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "title": "Task ID",
+                        "description": "ID for the task, a single alhpanumeric word please"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "A friendly name for this task"
+                    },
+                    "accountId": {
+                        "type": "string",
+                        "title": "Account ID for NRQL"
+                    },
+                    "selector": {
+                        "type": "string",
+                        "title": "Query value selector",
+                        "description": "Name of the field containing the value to use. Supports dot notation for fields that return objects (like percentile())"
+                    },
+                    "chaining": {
+                        "type": "string",
+                        "title": "Chaining type",
+                        "description": "Chaining method",
+                        "default": "NONE",
+                        "enum": ["NONE", "DIFF", "PERC_DIFF"]
+                    },
+                    "fillNullValue": {
+                        "type": "number",
+                        "title": "Fill null values with"
+                    },
+                    "invertResult": {
+                        "type": "boolean",
+                        "title": "Invert result?",
+                        "descrption": "Converts +5 to -5 for example."
+                    },
+                    "ingestType": {
+                        "type": "string",
+                        "title": "Ingest type",
+                        "default": "metric",
+                        "enum": ["metric", "event"]
+                    },
+                    "query": {
+                        "type": "string",
+                        "title": "NRQL Query"
+                    }
+                }
+            }
+        }
+    }
+}
