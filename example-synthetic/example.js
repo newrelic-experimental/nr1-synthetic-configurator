@@ -1,3 +1,9 @@
+  //local testing suppport, these are already included in the syntehtic monitor runtime
+  const IS_LOCAL_ENV = typeof $http === 'undefined';
+  if (IS_LOCAL_ENV) {  
+    var $http = require("request");
+  } 
+
 // ** Paste the uglified.js code in here ** 
 
 async function run()  {

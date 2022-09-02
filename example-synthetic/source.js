@@ -1,12 +1,6 @@
 
 async function grabConfig(DOCUMENT_ID, ACCOUNT_ID, REGION, PACKAGE_UUID, QUERY_KEY) {
-
-  //local testing suppport, these are already included in the syntehtic monitor runtime
-  const IS_LOCAL_ENV = typeof $http === 'undefined';
-  if (IS_LOCAL_ENV) {  
-    var $http = require("request");
-  } 
-
+  
   const GRAPHQL_URL= REGION=="US" ? "https://api.newrelic.com/graphql" : "https://api.eu.newrelic.com/graphql"
 
   //Record the config used by this monitor so that it can be queried with NRQL
