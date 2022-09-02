@@ -19,6 +19,7 @@
 A mechanism based upon NerdStorage to allow configuration of synthetic monitors via an NR1 Application. This enables you to change runtime settings of a synthetic script using an easy to use form rather than editing the synthetic directly. This is particularly useful if you have a synhtetic script that needs configuration that may change occasionally and you want non-developers to be able to amend that configuration.
 
 ![Screenshot](screenshot.png)
+![Diagram](diagram.png)
 
 ## Installation
 The custom application should be deployed like an other custom Nerdpack. Information about deploying nerdpacks can be found on the [docs site.](https://developer.newrelic.com/build-apps/publish-deploy)
