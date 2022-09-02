@@ -21,7 +21,7 @@ A mechanism based upon NerdStorage to allow configuration of synthetic monitors 
 ![Screenshot](screenshot.png)
 
 ## Installation
-The custom application should be deployed like an other custom Nerdpack. Informaiton about deploying nerdpacks can be found on the [docs site.](https://developer.newrelic.com/build-apps/publish-deploy)
+The custom application should be deployed like an other custom Nerdpack. Information about deploying nerdpacks can be found on the [docs site.](https://developer.newrelic.com/build-apps/publish-deploy)
 
 Before deploying the application to your acount you MUST set your account ID in the code so that the configuration is stored in the correct account. You can set the value for `accountId` in the file [index.js](./nerdlets/nr1-synthetic-configurator/index.js)
 
@@ -60,7 +60,7 @@ const CONFIG = {
 }
 ```
 
-This is the accompanying JSONschema we need to drive the form. Notice the follwing features:
+This is the accompanying JSON schema we need to drive the form. Notice the following features:
 - Its possible to mark fields as required
 - Boolean fields (saleOn) will render a checkbox
 - You can specify arrays, the items within which can be re-ordered
@@ -133,9 +133,12 @@ This is the accompanying JSONschema we need to drive the form. Notice the follwi
 ```
 
 ## Using the configuration
-Once you have defined the schema you should be able to choose it from the drop down list and start filling in the data for your configuration. To load this configuration from your synthetic monitor click the `Show Code Snippet for Synthetic Monitor Loader` link which will reveal a code snippet to paste into your synthetic. This is in two parts, the load first which is an uglified compressed version of [source.js](./example-synthetic/source.js). This exposes a method `grabConfig(CONFIG_ID, ACCOUNT_ID, REGION, NERDPACK_PACKAGE_UUID, USER_API_KEY)` which will be auto filled with the correct values <em>except</em> USER_API_KEY which you will need to provide yourself, preferably via a secure credntial.
+Once you have defined the schema you should be able to choose it from the drop down list and start filling in the data for your configuration. To load this configuration from your synthetic monitor click the "Show Code Snippet for Synthetic Monitor Loader" link which will reveal a code snippet to paste into your synthetic. This is in two parts, the load first which is an uglified compressed version of [source.js](./example-synthetic/source.js). This exposes a method `grabConfig(CONFIG_ID, ACCOUNT_ID, REGION, NERDPACK_PACKAGE_UUID, USER_API_KEY)` which will be auto filled with the correct values <em>except</em> USER_API_KEY which you will need to provide yourself, preferably via a secure credntial. You may need to update the other values too.
 
 The second part of the snippet is an example of how to call the `grabConfig()` method, you'll need to await the response before using the resulting value, be sure to provide your own validation of the data if necessary.
+
+## Statistics
+The statistics shown against a configuration are sourced from the SyntheticCheck event. When your synthetic monitor requests the config a custom attribute `configurator` is set with the nerdpack UUID and config id. These statistics will only be accurate for synthetics runing in the account the app is deployed. If you are loading the confiuration from a synthetic in another account then the data will reside in that account (and be queryable) but will not appear on the charts in the app.
 
 ## Support
 Issues should be raised via Github issues https://github.com/newrelic-experimental/nr1-synthetic-configurator/issues
