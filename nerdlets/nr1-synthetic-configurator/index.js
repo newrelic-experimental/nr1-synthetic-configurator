@@ -20,10 +20,8 @@ function ConfiguratorSimpleNerdlet() {
   const [config, setConfig] = useState(false);
   const [chosenSchema, setChosenSchema] = useState(null);
   const [currentConfig, setCurrentConfig] = useState(null);
-  const [saving, setSaving] = useState(false);
   const [showTools, setshowTools] = useState(false);
   const [showSnippet, setShowSnippet] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [code, setCode] = React.useState(
     `// loading code snippet....`
   );
@@ -108,14 +106,13 @@ async function run()  {
   // We recommend specifying your User API key using secure credentials: https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/using-monitors/store-secure-credentials-scripted-browsers-api-tests/
   // let config = await grabConfig(CONFIG_ID, ACCOUNT_ID, REGION, NERDPACK_PACKAGE_UUID, USER_API_KEY)
   let config = await grabConfig("${id}", ${accountId}, "US", "${nerdpackUUID}","NRAK-xxxx")
-  console.log("Config laoded is:",config)
+  console.log("Configuration loaded:",config)
 }
 run()   
     ` )
   }
 
   const saveConfig = (data) => {
-    setSaving(true)
     setCurrentConfig(data)
     AccountStorageMutation.mutate({
       accountId: accountId,
@@ -126,7 +123,6 @@ run()
         config: JSON.stringify(data)
       },
     }).then(()=>{
-      setSaving(false)
       Toast.showToast({
         title: `Data saved for configuration ${chosenSchema.name}`,
         type: Toast.TYPE.NORMAL,
@@ -180,8 +176,7 @@ run()
           fontSize: 12,
         }}
       /> 
-       <CopyToClipboard text={code}
-        onCopy={() => setCopied(true)}>
+       <CopyToClipboard text={code}>
         <button>Copy code to clipboard</button>
       </CopyToClipboard>
       </div>
