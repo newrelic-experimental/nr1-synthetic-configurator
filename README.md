@@ -16,10 +16,13 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/newrelic-experimental/nr1-synthetic-configurator)
 ![GitHub pull requests closed](https://img.shields.io/github/issues-pr-closed/newrelic-experimental/nr1-synthetic-configurator)
 
-A mechanism based upon NerdStorage to allow configuration of synthetic monitors via an NR1 Application. This enables you to change runtime settings of a synthetic script using an easy to use form rather than editing the synthetic directly. This is particularly useful if you have a synhtetic script that needs configuration that may change occasionally and you want non-developers to be able to amend that configuration.
+A mechanism to allow configuration of synthetic monitors via an NR1 Application. This enables you to change runtime settings of a synthetic script using an easy to use form rather than editing the synthetic directly. This is particularly useful if you have a synthetic script that needs configuration that may change occasionally and you want non-developers to be able to amend that configuration without editing the synhtetic script itself.
 
 ![Screenshot](screenshot.png)
 ![Diagram](diagram.png)
+
+## Example use case: 
+Perhaps you're a retailer and want to check certain products or product types are displaying correctly on your site. Right now you would need to configure a list of products to check within the script. For instance you might need to specify product names, codes and prices. When the data needs to change you'd need to open up the synthetic script and change the code. This can lead to issues and be subject to skill silos. Using the synhthetic cnofigurator would allow you to move the management of the configuration data that drives the script, the product names and prices etc, to an app that is easier to use and can be managed by non developers.
 
 ## Installation
 The custom application should be deployed like an other custom Nerdpack. Information about deploying nerdpacks can be found on the [docs site.](https://developer.newrelic.com/build-apps/publish-deploy)
@@ -37,9 +40,9 @@ The requirements of every synthetic will be different. You need to know the shap
 
 
 ### Example Schema
-Here is an example of a configuration and the related schema required, you can use this as inspiration for your own requirements. You might need to configure a set of URL's or product numbers for instance.
+Here is an example of a configuration and the related schema required, you can use this as inspiration for your own requirements. You might need to configure a set of URL's or product numbers for instance. Notice how each filed in your object has a representation in the schema allowing you to specify its type, dusplai and validation.
 
-In this example we're modelling the configuration for an ice cream shop. Here we demonstrate strings, numbers, booleans, arrays and enumerated types. Here is the configuration object that my script currently uses:
+In this toy example we're modelling the configuration data for an ice cream shop. Here we demonstrate strings, numbers, booleans, arrays and enumerated types. Here is the hard coded configuration JSON that the script currently uses:
 ```
 const CONFIG = {
     "shopName": "James Ice Cream Emporium",
@@ -61,7 +64,7 @@ const CONFIG = {
 }
 ```
 
-This is the accompanying JSON schema we need to drive the form. Notice the following features:
+This is the accompanying JSON schema we need to drive the form for that JSON configuration. Notice the following features:
 - Its possible to mark fields as required
 - Boolean fields (saleOn) will render a checkbox
 - You can specify arrays, the items within which can be re-ordered
