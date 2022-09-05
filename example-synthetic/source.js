@@ -1,5 +1,3 @@
-var assert = require('assert');
-
 //dealt with new runtimes and scripted browser
 const USE_GOT= (typeof $http === 'undefined')
 if(USE_GOT) { 
