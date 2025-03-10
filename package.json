@@ -17,7 +17,7 @@
       "echo"
     ],
     "dependencies": {
-        "prismjs": "^1.29.0",
+        "prismjs": "^1.30.0",
         "prop-types": "15.7.2",
         "react": "17.0.2",
         "react-copy-to-clipboard": "^5.1.0",
